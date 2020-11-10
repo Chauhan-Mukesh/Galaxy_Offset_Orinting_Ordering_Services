@@ -1,0 +1,82 @@
+{% extends 'GalaxyOffset\basic.html' %}
+
+{% block title%}Profile{% endblock %}
+
+{% block body%}
+
+<form method="POST" role="form" class="row" enctype="multipart/form-data" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-4 my-5">
+            <div class="col order-lg-1 text-center">
+                <img src="{{request.user.avatar.url}}"
+                     class="border border-secondary mt-4 mx-auto rounded-circle d-block"
+                     alt="avatar" height="336" width="307">
+                <h6 class="mt-2">Upload a different photo</h6>
+                <label class="custom-file my-4">
+                    <input type="file" name="avatar" class="custom-file-control  btn btn-outline-secondary my-2 my-sm-0"
+                           accept="image/*" id="id_avatar">
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-8 my-3 ">
+        <div class="col order-lg-2 my-2">
+            <ul class="nav nav-tabs ">
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab"
+                       class="nav-link active font-weight-bold">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active card border-secondary mb-3 mx-3 my-3" id="edit">
+
+                    <h5 class=" text-white card-header  mb-3 mx-3 my-3" style="background-color:#6c757d">Edit
+                        Profile</h5>
+                    <div class="mx-4">
+                        <div class="form-group row mx-2">
+                            <label class="col-lg-3 col-form-label form-control-label font-weight-bold card-header"
+                                   style="background-color:#e3e4e6">First name</label>
+                            <div class="col-lg-9 my-2">
+                                <input type="text" class="form-control border border-secondary" name="first_name"
+                                       placeholder="First Name" required id="id_first_name">
+                            </div>
+                        </div>
+                        <div class="form-group row mx-2">
+                            <label class="col-lg-3 col-form-label form-control-label font-weight-bold card-header"
+                                   style="background-color:#e3e4e6">Last name</label>
+                            <div class="col-lg-9 my-2">
+                                <input type="text" class="form-control border border-secondary" name="last_name"
+                                       placeholder="Last Name" required id="id_last_name">
+                            </div>
+                        </div>
+                        <div class="form-group row mx-2">
+                            <label class="col-lg-3 col-form-label form-control-label font-weight-bold card-header"
+                                   style="background-color:#e3e4e6">Email</label>
+                            <div class="col-lg-9 my-2">
+                                <input type="email" class="form-control border border-secondary" name="email"
+                                       placeholder="Email" required id="id_email">
+                            </div>
+                        </div>
+                        <div class="form-group row mx-2">
+                            <label class="col-lg-3 form-control-label font-weight-bold card-header"
+                                   style="background-color:#e3e4e6">Username</label>
+                            <div class="col-lg-9 my-2">
+                                <input type="text" class="form-control border border-secondary" name="username"
+                                       placeholder="User Name" value="" required id="id_username">
+                            </div>
+                        </div>
+                        <div class="form-group row mx-2">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9 my-2">
+                                <input type="reset" class="btn btn-secondary" value="Cancel">
+                                <input type="submit" class="btn btn-primary" value="Update Profile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

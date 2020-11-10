@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {%load static%}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <link href="{% static '../css/basic.css' %}" rel="stylesheet" type="text/css">
+    <title>{% block title%} {% endblock %} | Galaxy Offset</title>
+    <style>
+        body
+        {
+        background: url('{% static "../images/photo1.jpg" %}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moj-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+    </style>
+    {% block css %} {% endblock %}
+</head>
+<nav class="navbar navbar-expand-lg navbar-light py-2 ">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown active">
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle btn"
+                   data-toggle="dropdown" id="navbarDropdown">
+                    Product
+                </a>
+                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a aria-disabled="true" class="nav-link active" href="{% url 'about'%}" tabindex="-1">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a aria-disabled="true" class="nav-link active" href="{% url 'contact'%}" tabindex="-1">Contact
+                    Us</a>
+            </li>
+        </ul>
+        <form class="form-inline mr-2">
+            {% if user.is_authenticated %}
+            <ul class="nav-item dropdown active my-0 mr-2">
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle btn"
+                   data-toggle="dropdown" id="profileDropdown">
+                    <img class="border border-secondary rounded-circle my-2 mx-3" height="35"
+                         src="{{request.user.avatar.url}}"
+                         width="35"/>
+                    My Account
+                </a>
+                <div aria-labelledby="navbarDropdown"
+                     class="dropdown-menu mdb-select md-form colorful-select-secondary">
+                    <a class="dropdown-item" href="{% url 'view-profile' %}">View Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'change-password' %}">Change Password</a>
+                </div>
+            </ul>
+
+            <a class="btn btn-outline-secondary my-2 my-sm-0" href="{% url 'logout' %}" type="button">Sign Out</a>
+            {% else %}
+            <a class="btn btn-outline-secondary my-2 mx-2 my-sm-0" href="{% url 'login' %}" type="button"> Sign In</a>
+            <a class="btn btn-outline-secondary my-2 mx-2 my-sm-0" href="{% url 'register' %}" type="button">Sign Up</a>
+            {% endif %}
+        </form>
+    </div>
+</nav>
+<body style="background-color: #f5fbff;">
+<div class="container">
+    {% block body %} {% endblock %}
+</div>
+</body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+<script>
+
+</script>
+{% block js %} {% endblock %}
+</html>
