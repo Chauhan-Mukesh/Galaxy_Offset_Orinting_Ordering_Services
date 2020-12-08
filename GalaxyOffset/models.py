@@ -21,9 +21,12 @@ class User(AbstractUser):
 class Product(models.Model):
     prod_ID = models.AutoField("Product ID", primary_key=True)
     prod_Name = models.CharField("Product Name", max_length=30, null=False)
-    prod_Desc = models.CharField("Product Description", max_length=500, null=False)
+    prod_Desc = models.CharField("Product Description", max_length=2000, null=False)
     prod_Price = models.IntegerField("Product Price/Piece", default=0.00)
-    prod_img = models.ImageField("Product Image", null=True)
+    prod_img = models.ImageField("Product Image", upload_to='productImage/', null=True)
+
+    def __str__(self):
+        return f"{self.prod_ID}-->{self.prod_Name}"
 
 
 class Packages(models.Model):
@@ -44,6 +47,7 @@ class Order(models.Model):
     order_id = models.AutoField("Order ID", primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=False, verbose_name="Customer ID")
     prod_id = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, verbose_name="Product ID")
+    quantity = models.ImageField('Product Quantity', max_length=10, default=500)
     attribute_value = models.CharField("Item Details JSON", max_length=2000, null=False)
     order_date = models.DateField("Order Date", auto_now_add=True, null=False)
     order_job_title = models.CharField("Name of Company/Business", max_length=100, null=False)
@@ -76,47 +80,74 @@ class ImageTemplate(models.Model):
 
 class Size(models.Model):
     size_id = models.AutoField("Size ID", primary_key=True, auto_created=True)
-    prod_size = models.ImageField("Product Size", max_length=20, null=False)
+    prod_size = models.CharField("Product Size", max_length=20, null=False)
+
+    def __str__(self):
+        return f"{self.size_id}-->{self.prod_size}"
 
 
 class Color(models.Model):
     color_id = models.AutoField("Color ID", primary_key=True, auto_created=True)
-    prod_color = models.ImageField("Product Color", max_length=50, null=False)
+    prod_color = models.CharField("Product Color", max_length=50, null=False)
+
+    def __str__(self):
+        return f"{self.color_id}-->{self.prod_color}"
 
 
 class PaperChoice(models.Model):
     paper_id = models.AutoField("Paper Choice ID", primary_key=True, auto_created=True)
     paper_choices_name = models.CharField("Paper Choices", max_length=50, null=False)
 
+    def __str__(self):
+        return f"{self.paper_id}-->{self.paper_choices_name}"
+
 
 class ShrinkWrapping(models.Model):
     shrink_wrapping_id = models.AutoField("Shrink Wrapping ID", primary_key=True, auto_created=True)
     shrink_options = models.CharField("Shrink Wrap Options", max_length=20, null=False)
+
+    def __str__(self):
+        return f"{self.shrink_wrapping_id}-->{self.shrink_options}"
 
 
 class AqutousCoating(models.Model):
     aqutous_coating_id = models.AutoField("Aqutous Coating ID", primary_key=True, auto_created=True)
     aqutous_coating_type = models.CharField("Aqutous Coating Type", max_length=30, null=False)
 
+    def __str__(self):
+        return f"{self.aqutous_coating_id}-->{self.aqutous_coating_type}"
+
 
 class FoldingOptions(models.Model):
     folding_options_id = models.AutoField("Folding Options ID", primary_key=True, auto_created=True)
     folding_options_type = models.CharField("Folding Options Types", max_length=30, null=False)
 
+    def __str__(self):
+        return f"{self.folding_options_id}-->{self.folding_options_type}"
+
 
 class NoOfMonths(models.Model):
     no_of_months_id = models.AutoField("No Of Months ID", primary_key=True, auto_created=True)
-    months = models.IntegerField("Months", null=False)
+    months = models.CharField("No of Months", max_length=15, null=False)
+
+    def __str__(self):
+        return f"{self.no_of_months_id}-->{self.months}"
 
 
 class HoleDrilling(models.Model):
     hole_drilling_id = models.AutoField("Hole Drilling ID", primary_key=True, auto_created=True)
     hole = models.BooleanField("Hole Drilling", null=False, default=False)
 
+    def __str__(self):
+        return f"{self.hole_drilling_id}-->{self.hole}"
+
 
 class BindingMethod(models.Model):
     binding_method_id = models.AutoField("Binding Method ID", primary_key=True, auto_created=True)
     binding_methods = models.CharField("Binding Methods", max_length=30, null=False)
+
+    def __str__(self):
+        return f"{self.binding_method_id}-->{self.binding_methods}"
 
 
 class ImageTemplateProductMapping(models.Model):

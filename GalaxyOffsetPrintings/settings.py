@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'GalaxyOffset.context_processors.extras'
             ],
         },
     },
@@ -81,7 +82,7 @@ DATABASES = {
             'OPTIONS': {
                 'sql_mode': 'traditional',
             },
-            'NAME': 'galaxy_offset_test',
+            'NAME': 'galaxy_offset_test1',
             'USER': 'root',
             'PASSWORD': '123',
             'HOST': 'localhost',  # 127.0.0.1:8000
@@ -132,3 +133,10 @@ STAICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'Your email'
+EMAIL_HOST_PASSWORD = 'your password'
+EMAIL_USE_TLS = True

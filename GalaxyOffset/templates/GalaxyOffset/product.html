@@ -1,7 +1,22 @@
-\{% extends 'GalaxyOffset\basic.html' %}
+{% extends 'GalaxyOffset\basic.html' %}
 
 {% block title%}Products{% endblock %}
 
 {% block body%}
-<h1>Welcome To Products Page</h1>
+<div class="card my-2 mx-0 auto">
+    <div class="mx-4 my-2">
+        <h1>{{ products.prod_Name }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <img class="border border-secondary my-4 mx-4" height="200"
+                 src="{{products.prod_img.url}}"
+                 width="200"/>
+        </div>
+        <div class="col-8 my-4">
+            <p> {{products.prod_Desc}}</p>
+        </div>
+        <div class="dropdown-divider"></div>
+    </div>
+</div>
 {% endblock %}

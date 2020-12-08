@@ -1,9 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.core import serializers
+from django.forms.models import model_to_dict
 from .forms import CreateUserForm, EditUserProfile
+from .models import *
+import json
 
 
 def index(request):
@@ -74,16 +78,39 @@ def aboutUs(request):
     return render(request, "GalaxyOffset/about.html")
 
 
-def contact(request):
-    return render(request, "GalaxyOffset/contact.html")
+def packages(request):
+    return render(request, "GalaxyOffset/packages.html")
+
+
+def feedback(request):
+    if request.user.is_authenticated:
+        return redirect('feedback')
+    else:
+        return redirect('login')
 
 
 def order(request):
     return render(request, "GalaxyOffset/order.html")
 
 
-def product(request):
-    return render(request, "GalaxyOffset/product.html")
+def product(request, id):
+    products = Product.objects.get(prod_ID=id)
+    print(products)
+    sizesmap = SizeProductMapping.objects.filter(prod_id=id)
+
+    # print(sizesmap)
+    # for data in sizesmap:
+    #     sizes = data.size_id
+    #     print(sizes.prod_size)
+
+    # for data in sizesmap:
+    #     dict_obj = model_to_dict(data)
+    #     serialized = json.dumps(dict_obj)
+    #     print(serialized)
+    #     sizes=data.size_id
+    #     print(sizes.prod_size)
+    # return HttpResponse(sizesmap)
+    return render(request, "GalaxyOffset/product.html", {'products': products})
 
 
 def view_profile(request):
@@ -92,10 +119,6 @@ def view_profile(request):
 
 def edit_profile(request):
     return render(request, "GalaxyOffset/edit_profile.html")
-
-
-def feedback(request):
-    return render(request, "GalaxyOffset/feedback.html")
 
 
 def change_password(request):
