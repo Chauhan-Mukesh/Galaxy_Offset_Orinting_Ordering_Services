@@ -1,13 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.core import serializers
-from django.forms.models import model_to_dict
+
 from .forms import CreateUserForm, EditUserProfile
 from .models import *
-import json
 
 
 def index(request):
@@ -95,22 +92,86 @@ def order(request):
 
 def product(request, id):
     products = Product.objects.get(prod_ID=id)
-    print(products)
-    sizesmap = SizeProductMapping.objects.filter(prod_id=id)
+    sizeslist = []
+    AqutousCoatingProductlist = []
+    Colorslist = []
+    PaperChoiceProductslist = []
+    ShrinkWrappingProductslist = []
+    FoldingOptionsProductslist = []
+    NoOfMonthsProductslist = []
+    HoleDrillingProductslist = []
+    BindingMethodProductslist=[]
 
-    # print(sizesmap)
-    # for data in sizesmap:
-    #     sizes = data.size_id
-    #     print(sizes.prod_size)
+    try:
+        sizesmap = SizeProductMapping.objects.filter(prod_id=id)
+        sizeslist = [data.size_id.prod_size for data in sizesmap]
+    except AttributeError:
+        pass
 
-    # for data in sizesmap:
-    #     dict_obj = model_to_dict(data)
-    #     serialized = json.dumps(dict_obj)
-    #     print(serialized)
-    #     sizes=data.size_id
-    #     print(sizes.prod_size)
-    # return HttpResponse(sizesmap)
-    return render(request, "GalaxyOffset/product.html", {'products': products})
+    try:
+        colormap = ColorProductMapping.objects.filter(prod_id=id)
+        Colorslist = [data.color_id.prod_color for data in colormap]
+    except AttributeError:
+        pass
+
+    try:
+        PaperChoiceProductmap = PaperChoiceProductMapping.objects.filter(prod_id=id)
+        PaperChoiceProductslist = [data.paper_id.paper_choices_name for data in PaperChoiceProductmap]
+    except AttributeError:
+        pass
+
+    try:
+        AqutousCoatingProductmap = AqutousCoatingProductMapping.objects.filter(prod_id=id)
+        AqutousCoatingProductlist = [data.aqutous_coating_id.aqutous_coating_type for data in AqutousCoatingProductmap]
+    except AttributeError:
+        pass
+
+    try:
+        ShrinkWrappingProductsmap = SizeProductMapping.objects.filter(prod_id=id)
+        ShrinkWrappingProductslist = [data.shrink_wrapping_id.shrink_options for data in ShrinkWrappingProductsmap]
+    except AttributeError:
+        pass
+
+    try:
+        FoldingOptionsProductsmap = FoldingOptionsProductMapping.objects.filter(prod_id=id)
+        FoldingOptionsProductslist = [data.folding_options_id.folding_options_type for data in
+                                      FoldingOptionsProductsmap]
+    except AttributeError:
+        pass
+
+    try:
+        NoOfMonthsProductsmap = NoOfMonthsProductMapping.objects.filter(prod_id=id)
+        NoOfMonthsProductslist = [data.no_of_months_id.months for data in
+                                  NoOfMonthsProductsmap]
+    except AttributeError:
+        pass
+
+    try:
+        HoleDrillingProductsmap = HoleDrillingProductMapping.objects.filter(prod_id=id)
+        HoleDrillingProductslist = [data.hole_drilling_id.hole for data in
+                                    HoleDrillingProductsmap]
+    except AttributeError:
+        pass
+
+    try:
+        BindingMethodProductsmap = BindingMethodProductMapping.objects.filter(prod_id=id)
+        BindingMethodProductslist = [data.binding_method_id.binding_methods for data in
+                                    BindingMethodProductsmap]
+    except AttributeError:
+        pass
+
+    context = {'products': products,
+               'sizeslist': sizeslist,
+               "AqutousCoatingProductlist": AqutousCoatingProductlist,
+               "Colorslist": Colorslist,
+               "PaperChoiceProductslist": PaperChoiceProductslist,
+               "ShrinkWrappingProductslist": ShrinkWrappingProductslist,
+               "FoldingOptionsProductslist": FoldingOptionsProductslist,
+               "NoOfMonthsProductslist": NoOfMonthsProductslist,
+               "HoleDrillingProductslist": HoleDrillingProductslist,
+               "BindingMethodProductslist":BindingMethodProductslist
+               }
+    return render(request, "GalaxyOffset/product.html", context)
 
 
 def view_profile(request):

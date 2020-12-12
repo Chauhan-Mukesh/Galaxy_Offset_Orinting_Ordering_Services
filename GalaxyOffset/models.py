@@ -212,6 +212,6 @@ class HoleDrillingProductMapping(models.Model):
 
 class BindingMethodProductMapping(models.Model):
     binding_methods_p_map_id = models.AutoField("Binding Method & Product Map ID", primary_key=True, auto_created=True)
-    binding_method_id = models.ForeignKey(Color, null=False, on_delete=models.CASCADE,
+    binding_method_id = models.ForeignKey(BindingMethod, null=False, on_delete=models.CASCADE,
                                           verbose_name="Binding Methods ID")
     prod_id = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, verbose_name="Product Id")
