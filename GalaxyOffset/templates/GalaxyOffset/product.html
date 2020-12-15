@@ -1,7 +1,5 @@
 {% extends 'GalaxyOffset\basic.html' %}
-
 {% block title%}Products{% endblock %}
-
 {% block body%}
 <div class="card my-2 mx-0 auto">
     <div class="mx-4 my-2">
@@ -19,133 +17,194 @@
         <div class="dropdown-divider"></div>
     </div>
 </div>
-
 <div class="row">
-    <div class="col-4">
-        <div class="card mx-2 my-2 border border-secondary">
-            <div class="mx-2 mt-4">
-                {% for category in categories %}
-                <a id="{{ category.prod_ID }}" class="dropdown-item" href="{% url 'product' category.prod_ID%}">
-                    {{ category.prod_ID }}. {{ category.prod_Name }}</a>
-                <div class="dropdown-divider"></div>
-                {% endfor %}
+    <div class="row rounded mx-auto d-block">
+        <button class="btn btn-secondary my-2">Custom</button>
+        <button class="btn btn-secondary my-2">Package</button>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card mx-2 my-2 border border-secondary">
+                <div class="mx-2 mt-4">
+                    {% for category in categories %}
+                    <a id="{{ category.prod_ID }}" class="dropdown-item" href="{% url 'product' category.prod_ID%}">
+                        {{ category.prod_ID }}. {{ category.prod_Name }}</a>
+                    <div class="dropdown-divider"></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card mx-2 my-2 border border-secondary">
+                <div class="row my-2">
+
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Quantity : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        <input type="number"> {{s}}
+                        <br>
+                    </div>
+
+                    {% if sizeslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Sizes : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in sizeslist %}
+                        <input type="radio" name="sizes"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if Colorslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Colors : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in Colorslist %}
+                        <input type="radio" name="colorslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if PaperChoiceProductslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Paper Choices : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in PaperChoiceProductslist %}
+                        <input type="radio" name="PaperChoiceProductslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if AqutousCoatingProductlist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Aqutous Coating : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in AqutousCoatingProductlist %}
+                        <input type="radio" name="AqutousCoatingProductlist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if FoldingOptionsProductslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Folding Options : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in FoldingOptionsProductslist %}
+                        <input type="radio" name="FoldingOptionsProductslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if NoOfMonthsProductslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>No Of Months : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in NoOfMonthsProductslist %}
+                        <input type="radio" name="NoOfMonthsProductslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if BindingMethodProductslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Binding Method : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in BindingMethodProductslist %}
+                        <input type="radio" name="BindingMethodProductslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if HoleDrillingProductslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Hole Drilling : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in HoleDrillingProductslist %}
+                        <input type="radio" name="HoleDrillingProductslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if ShrinkWrappingProductslist %}
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Paper Choices : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        {% for s in ShrinkWrappingProductslist %}
+                        <input type="radio" name="ShrinkWrappingProductslist"> {{s}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Job Title : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2 col-xs-12">
+                        <input type="text" placeholder="Name of the Company or Shop" size="42">
+                        <br>
+                    </div>
+
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Order Description : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        <textarea rows="5" cols="45"
+                                  placeholder="Enter all the details about product ...">
+                        </textarea>
+                        <br>
+                    </div>
+
+                    <div class="col-4 ml-4 mt-2">
+                        <h4>Image Template : </h4>
+                    </div>
+                    <div class="col-5 mr-4 mt-2">
+                        <input id="Upload" type="radio" name="ImageSelection" value="Upload"/> Upload an Image
+                        <input type="file" name="file" class='type'>
+                        <br>
+                        <input id="Select" type="radio" name="ImageSelection" value="Select"/> Select From Templates
+                        <input type="button" name="url" style='display: none;' class='btn btn-secondary type'
+                               value="choose file">
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-8">
-        <div class="card mx-2 my-2 border border-secondary">
-            <div class="row my-2">
-                {% if sizeslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Sizes : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in sizeslist %}
-                    <input type="radio" name="sizes"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if Colorslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Colors : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in Colorslist %}
-                    <input type="radio" name="colorslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if PaperChoiceProductslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Paper Choices : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in PaperChoiceProductslist %}
-                    <input type="radio" name="PaperChoiceProductslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-
-                {% if AqutousCoatingProductlist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Aqutous Coating : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in AqutousCoatingProductlist %}
-                    <input type="radio" name="AqutousCoatingProductlist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if FoldingOptionsProductslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Folding Options : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in FoldingOptionsProductslist %}
-                    <input type="radio" name="FoldingOptionsProductslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if NoOfMonthsProductslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>No Of Months : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in NoOfMonthsProductslist %}
-                    <input type="radio" name="NoOfMonthsProductslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if BindingMethodProductslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Binding Method : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in BindingMethodProductslist %}
-                    <input type="radio" name="BindingMethodProductslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if HoleDrillingProductslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Hole Drilling : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in HoleDrillingProductslist %}
-                    <input type="radio" name="HoleDrillingProductslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if ShrinkWrappingProductslist %}
-                <div class="col-4 ml-4 mt-2">
-                    <h4>Paper Choices : </h4>
-                </div>
-                <div class="col-5 mr-4 mt-2">
-                    {% for s in ShrinkWrappingProductslist %}
-                    <input type="radio" name="ShrinkWrappingProductslist"> {{s}}
-                    <br>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-            </div>
-        </div>
+    <div class="row rounded mx-auto d-block">
+        <button class="btn btn-success my-2">Place Order</button>
     </div>
 </div>
 {% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+$("document").ready(function(){
+$(".type").hide();
+$("input:radio").change(function() {
+    $(".type").hide();
+    $(this).next("input").show();
+});
+});
+
+</script>
+{% endblock %}
+
+

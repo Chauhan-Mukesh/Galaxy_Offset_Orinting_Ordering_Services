@@ -22,7 +22,7 @@
     </style>
     {% block css %} {% endblock %}
 </head>
-<nav class="navbar  navbar-fixed-top navbar-expand-lg navbar-light py-2" role="navigation">
+<nav class="navbar navbar-expand-lg navbar-light py-2" role="navigation">
     <a class="navbar-brand" href="{% url 'index'%}">Galaxy Offset</a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler"
@@ -42,7 +42,7 @@
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                     {% for category in categories %}
-                    <a id="cat{{ category.prod_ID }}"class="dropdown-item" href="{% url 'product' category.prod_ID%}">{{ category.prod_ID }}.) {{ category.prod_Name }}</a>
+                    <a id="cat{{ category.prod_ID }}" class="dropdown-item" href="{% url 'product' category.prod_ID%}">{{ category.prod_ID }}.) {{ category.prod_Name }}</a>
                     <div class="dropdown-divider"></div>
                     {% endfor %}
                 </div>
@@ -99,8 +99,6 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-<script>
-
-</script>
-{% block js %} {% endblock %}
+{% block js %}
+{% endblock %}
 </html>

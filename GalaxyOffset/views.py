@@ -100,7 +100,7 @@ def product(request, id):
     FoldingOptionsProductslist = []
     NoOfMonthsProductslist = []
     HoleDrillingProductslist = []
-    BindingMethodProductslist=[]
+    BindingMethodProductslist = []
 
     try:
         sizesmap = SizeProductMapping.objects.filter(prod_id=id)
@@ -156,7 +156,7 @@ def product(request, id):
     try:
         BindingMethodProductsmap = BindingMethodProductMapping.objects.filter(prod_id=id)
         BindingMethodProductslist = [data.binding_method_id.binding_methods for data in
-                                    BindingMethodProductsmap]
+                                     BindingMethodProductsmap]
     except AttributeError:
         pass
 
@@ -169,7 +169,7 @@ def product(request, id):
                "FoldingOptionsProductslist": FoldingOptionsProductslist,
                "NoOfMonthsProductslist": NoOfMonthsProductslist,
                "HoleDrillingProductslist": HoleDrillingProductslist,
-               "BindingMethodProductslist":BindingMethodProductslist
+               "BindingMethodProductslist": BindingMethodProductslist
                }
     return render(request, "GalaxyOffset/product.html", context)
 
