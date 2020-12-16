@@ -28,7 +28,7 @@
                 <div class="mx-2 mt-4">
                     {% for category in categories %}
                     <a id="{{ category.prod_ID }}" class="dropdown-item" href="{% url 'product' category.prod_ID%}">
-                        {{ category.prod_ID }}. {{ category.prod_Name }}</a>
+                        <h5>{{ category.prod_ID }}. {{ category.prod_Name }}</h5></a>
                     <div class="dropdown-divider"></div>
                     {% endfor %}
                 </div>
@@ -39,7 +39,8 @@
                 <div class="row my-2">
 
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Quantity : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Quantity : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         <input type="number"> {{s}}
@@ -48,7 +49,8 @@
 
                     {% if sizeslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Sizes : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Sizes : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in sizeslist %}
@@ -60,7 +62,8 @@
 
                     {% if Colorslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Colors : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Colors : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in Colorslist %}
@@ -72,7 +75,8 @@
 
                     {% if PaperChoiceProductslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Paper Choices : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Paper Choices : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in PaperChoiceProductslist %}
@@ -84,7 +88,8 @@
 
                     {% if AqutousCoatingProductlist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Aqutous Coating : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Aqutous Coating : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in AqutousCoatingProductlist %}
@@ -96,7 +101,8 @@
 
                     {% if FoldingOptionsProductslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Folding Options : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Folding Options : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in FoldingOptionsProductslist %}
@@ -108,7 +114,8 @@
 
                     {% if NoOfMonthsProductslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>No Of Months : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>No Of Months : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in NoOfMonthsProductslist %}
@@ -120,7 +127,8 @@
 
                     {% if BindingMethodProductslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Binding Method : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Binding Method : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in BindingMethodProductslist %}
@@ -132,7 +140,8 @@
 
                     {% if HoleDrillingProductslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Hole Drilling : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Hole Drilling : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in HoleDrillingProductslist %}
@@ -144,7 +153,8 @@
 
                     {% if ShrinkWrappingProductslist %}
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Paper Choices : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Paper Choices : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         {% for s in ShrinkWrappingProductslist %}
@@ -155,7 +165,8 @@
                     {% endif %}
 
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Job Title : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Job Title : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2 col-xs-12">
                         <input type="text" placeholder="Name of the Company or Shop" size="42">
@@ -163,7 +174,8 @@
                     </div>
 
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Order Description : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Order Description : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         <textarea rows="5" cols="45"
@@ -173,7 +185,8 @@
                     </div>
 
                     <div class="col-4 ml-4 mt-2">
-                        <h4>Image Template : </h4>
+                        <label class="form-control-label font-weight-bold card-header"
+                               style="background-color:#e3e4e6"><h5>Image Template : </h5></label>
                     </div>
                     <div class="col-5 mr-4 mt-2">
                         <input id="Upload" type="radio" name="ImageSelection" value="Upload"/> Upload an Image
@@ -203,6 +216,10 @@ $("input:radio").change(function() {
     $(this).next("input").show();
 });
 });
+
+
+
+
 
 </script>
 {% endblock %}
